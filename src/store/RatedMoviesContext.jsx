@@ -1,46 +1,51 @@
+import { comment } from "postcss";
 import { createContext, useReducer } from "react";
 
 const RatedMoviesContext = createContext({
     reatedMovies: [],
-    addMovie: (movie, rating) => {},
+    addMovie: (movie, rating, comment) => {},
     removeMovie: (movieId) => {}
 });
 
 function movieReducer(state, action) {
-    const existingMovieIndex = state.findIndex(movie => movie.id === action.id);
     let updatedMovies = [...state];
     
     switch (action.type) {
         case "ADD":
+            let existingMovieIndex = state.findIndex(movie => movie.id === action.movie.id);
             const existingMovie = state[existingMovieIndex];
             if (existingMovie) {
                 const updatedMovie = {
                     ...existingMovie,
-                    rating: action.rating
+                    rating: action.rating,
+                    comment: action.comment
                 };
                 updatedMovies[existingMovieIndex] = updatedMovie;
             } else {
                 updatedMovies = state.concat({
-                    id: action.id,
-                    rating: action.rating
+                    movie: action.movie,
+                    rating: action.rating,
+                    comment: action.comment
                 });
             }
             break;
         case "REMOVE":
+            existingMovieIndex = state.findIndex(movie => movie.id === action.id);
             updatedMovies.splice(existingMovieIndex, 1);
             break;
         default:
             break;
     }
 
+    console.log(updatedMovies);
     return updatedMovies;
 }
 
 export function RatedMoviesContextProvider({children}) {
     const [ratedMovies, dispatchRatedMoviesAction] = useReducer(movieReducer, []);
 
-    function addMovieHandler(movieId, rating) {
-        dispatchRatedMoviesAction({type: "ADD", id: movieId, rating: rating});
+    function addMovieHandler(movie, rating, comment) {
+        dispatchRatedMoviesAction({type: "ADD", movie: movie, rating: rating, comment: comment});
     }
 
     function removeMovieHandler(movieId) {

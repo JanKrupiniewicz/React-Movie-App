@@ -10,13 +10,17 @@ const MoviesModalContext = createContext({
 
 export function MoviesModalContextProvider({children}) {
     const [modalAction, setModalAction] = useState('');
+    const [currentMovie, setCurrentMovie] = useState(null);
 
-    function showMovieModal() {
+    function showMovieModal(movie) {
         setModalAction('movie');
-        console.log('Showing movie ...');
+        setCurrentMovie(movie);
+
+        console.log(movie);
     }
     function hideMovieModal() {
         setModalAction('');
+        setCurrentMovie(null);
     }
     function showRatedModal() {
         setModalAction('ratedMovies');
@@ -27,6 +31,7 @@ export function MoviesModalContextProvider({children}) {
     
     const MoviesModalCtx = {
         modalAction: modalAction,
+        currentMovie: currentMovie,
         showMovieModal,
         hideMovieModal,
         showRatedModal,
