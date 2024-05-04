@@ -13,7 +13,7 @@ function Modal({children, open, onClose}) {
     }, [open]);
 
     return createPortal(
-        <dialog className="rounded-xl md:w-1/3" ref={dialog} onClose={onClose}>
+        <dialog className="rounded-xl w-3/4 xl:w-1/3" ref={dialog} onClose={onClose}>
             {open ? children : null}
         </dialog>,
         document.getElementById('modal-root')

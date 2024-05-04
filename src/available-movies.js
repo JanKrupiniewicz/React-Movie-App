@@ -1,7 +1,45 @@
+import shawshankRedemption from "./assets/shawshank-redemption.png";
+import godfather from "./assets/godfather.png";
+import darkKnight from "./assets/dark-knight.png";
+import pulpFiction from "./assets/pulp-fiction.png";
+import matrix from "./assets/matrix.png";
+import inception from "./assets/inception.png";
+
+const shawshankRedemptionImage = {
+    src: shawshankRedemption,
+    alt: "The Shawshank Redemption"
+};
+
+const godfatherImage = {
+    src: godfather,
+    alt: "The Godfather"
+};
+
+const darkKnightImage = {
+    src: darkKnight,
+    alt: "The Dark Knight"
+};
+
+const pulpFictionImage = {
+    src: pulpFiction,
+    alt: "Pulp Fiction"
+};
+
+const matrixImage = {
+    src: matrix,
+    alt: "The Matrix"
+};
+
+const inceptionImage = {
+    src: inception,
+    alt: "Inception"
+};
+
 export const AVAILABLE_MOVIES = [
     {
         id: 1,
         title: "The Shawshank Redemption",
+        image: shawshankRedemptionImage,
         rating: 9.3,
         genre: "Drama",
         releaseDate: "14 October 1994",
@@ -10,6 +48,7 @@ export const AVAILABLE_MOVIES = [
     {
         id: 2,
         title: "The Godfather",
+        image: godfatherImage,
         rating: 9.2,
         genre: "Crime, Drama",
         releaseDate: "24 March 1972",
@@ -18,6 +57,7 @@ export const AVAILABLE_MOVIES = [
     {
         id: 3,
         title: "The Dark Knight",
+        image: darkKnightImage,
         rating: 9.0,
         genre: "Action, Crime, Drama",
         releaseDate: "18 July 2008",
@@ -26,6 +66,7 @@ export const AVAILABLE_MOVIES = [
     {
         id: 4,
         title: "Pulp Fiction",
+        image: pulpFictionImage,
         rating: 8.9,
         genre: "Crime, Drama",
         releaseDate: "14 October 1994",
@@ -34,6 +75,7 @@ export const AVAILABLE_MOVIES = [
     {
         id: 5,
         title: "The Matrix",
+        image: matrixImage,
         rating: 8.7,
         genre: "Action, Sci-Fi",
         releaseDate: "31 March 1999",
@@ -42,6 +84,7 @@ export const AVAILABLE_MOVIES = [
     {
         id: 6,
         title: "Inception",
+        image: inceptionImage,
         rating: 8.8,
         genre: "Action, Adventure, Sci-Fi",
         releaseDate: "16 July 2010",

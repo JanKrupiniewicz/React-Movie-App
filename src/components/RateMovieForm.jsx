@@ -1,17 +1,20 @@
 import { useContext } from "react";
 
 import RatedMoviesContext from "../store/RatedMoviesContext";
+import MoviesModalContext from "../store/MoviesModalContext";
 
 export default function RateMovieForm({ movie }) {
     const ratedMoviesCtx = useContext(RatedMoviesContext);
+    const moviesModalCtx = useContext(MoviesModalContext);
 
     function handleSubmit(event) {
         event.preventDefault();
+        
         const formData = new FormData(event.target);
-        const comment = formData.get('comment');
-        const rating = formData.get('rating');
+        ratedMoviesCtx.addMovie(movie, formData.get('rating'), formData.get('comment'));
 
-        ratedMoviesCtx.addMovie(movie, rating, comment);
+        moviesModalCtx.hideMovieModal();
+        event.target.reset();
     }
 
     return (
