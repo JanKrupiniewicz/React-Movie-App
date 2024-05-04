@@ -14,7 +14,6 @@ export default function Movies() {
         <section className="text-black">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 p-5">
                 {AVAILABLE_MOVIES.map((movie) => (
-                    console.log(movie),
                     <div key={movie.id} className="bg-white border-2 p-5 rounded-lg">
                         <img className="h-48 w-full object-cover" src={movie.image.src} alt={movie.title} />
                         <h3 className="text-xl font-bold">{movie.title}</h3>

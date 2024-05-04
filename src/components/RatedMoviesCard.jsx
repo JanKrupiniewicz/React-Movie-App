@@ -8,7 +8,7 @@ import RatedMoviesContext from "../store/RatedMoviesContext";
 export default function RatedMoviesCard() {
     const ratedMoviesCtx = useContext(RatedMoviesContext);
     const moviesModalCtx = useContext(MoviesModalContext);
-
+    
     return (
         <Modal
             open={moviesModalCtx.modalAction === 'ratedMovies'}
@@ -27,8 +27,8 @@ export default function RatedMoviesCard() {
                                             <p className="text-sm text-gray-500">
                                                 {movieData.movie.genre} | {movieData.movie.releaseDate}
                                             </p>
-                                            <p className="text-sm pt-5 text-justify">
-                                                {movieData.movie.description}
+                                            <p className="text-sm text-gray-500">
+                                                Critics rating: {movieData.movie.rating}
                                             </p>
                                             <p className="text-sm pt-5 text-justify">
                                                 Your rating: {movieData.rating}
@@ -36,6 +36,20 @@ export default function RatedMoviesCard() {
                                             <p className="text-sm pt-1 text-justify">
                                                 Your comment: {movieData.comment}
                                             </p>
+                                            <div className="flex flex-row justify-center space-x-5">
+                                                <Button
+                                                    className="bg-red-500 hover:bg-red-700 text-white text-sm mt-2 px-2 rounded-sm"
+                                                    onClick={() => moviesModalCtx.showMovieModal(movieData.movie)}
+                                                >
+                                                    View Movie
+                                                </Button>
+                                                <Button
+                                                    className="bg-red-500 hover:bg-red-700 text-white text-sm mt-2 px-2 rounded-sm"
+                                                    onClick={() => ratedMoviesCtx.removeMovie(movieData.movie)}
+                                                >
+                                                    Remove Rating
+                                                </Button>
+                                            </div>
                                         </div>
                                     );
                                 })

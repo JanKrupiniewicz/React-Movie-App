@@ -19,6 +19,7 @@ export default function MovieCard() {
             onClose={moviesModalCtx.modalAction === 'movie' && moviesModalCtx.hideMovieModal}
         >
             <div key={movie.id} className="border-2 p-5 rounded-lg">
+                <img className="h-48 w-full object-cover" src={movie.image.src} alt={movie.title} />
                 <h3 className="text-xl font-bold">{movie.title}</h3>
                 <p className="text-sm text-gray-500">
                     {movie.genre} | {movie.releaseDate} | Critics rating: {movie.rating}

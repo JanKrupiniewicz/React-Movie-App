@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 const MoviesModalContext = createContext({
     modalAction: '',
-    showMovieModal: () => {},
+    showMovieModal: (movie) => {},
     hideMovieModal: () => {},
     showRatedModal: () => {},
     hideRatedModal: () => {}
@@ -15,16 +15,17 @@ export function MoviesModalContextProvider({children}) {
     function showMovieModal(movie) {
         setModalAction('movie');
         setCurrentMovie(movie);
-
-        console.log(movie);
     }
+
     function hideMovieModal() {
         setModalAction('');
         setCurrentMovie(null);
     }
+    
     function showRatedModal() {
         setModalAction('ratedMovies');
     }
+
     function hideRatedModal() {
         setModalAction('');
     }

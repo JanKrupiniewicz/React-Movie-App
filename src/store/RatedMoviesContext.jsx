@@ -9,10 +9,11 @@ const RatedMoviesContext = createContext({
 
 function movieReducer(state, action) {
     let updatedMovies = [...state];
+    let existingMovieIndex;
     
     switch (action.type) {
         case "ADD":
-            let existingMovieIndex = state.findIndex(movie => movie.id === action.movie.id);
+            existingMovieIndex = state.findIndex(movie => movie.id === action.movie.id);
             const existingMovie = state[existingMovieIndex];
             if (existingMovie) {
                 const updatedMovie = {
